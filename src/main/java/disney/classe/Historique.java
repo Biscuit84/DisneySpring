@@ -18,7 +18,7 @@ public class Historique  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	private LocalDateTime dateHeurePartie;
 	
@@ -41,6 +41,21 @@ public class Historique  {
 	
 	
 	
+	public Historique(Long id, LocalDateTime dateHeurePartie, LocalTime tempsPartie, int positionArrivee,
+			int nbEtoilesGagnees, List<Partie> parties) {
+		super();
+		this.id = id;
+		this.dateHeurePartie = dateHeurePartie;
+		this.tempsPartie = tempsPartie;
+		this.positionArrivee = positionArrivee;
+		this.nbEtoilesGagnees = nbEtoilesGagnees;
+		this.parties = parties;
+	}
+
+
+
+
+
 	public Historique(LocalDateTime dateHeurePartie, LocalTime tempsPartie, int positionArrivee, int nbEtoilesGagnees) {
 		
 		this.dateHeurePartie = dateHeurePartie;
@@ -119,7 +134,15 @@ public class Historique  {
 
 
 
-	public int getId() {
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+
+
+	public Long getId() {
 		return id;
 	}
 	

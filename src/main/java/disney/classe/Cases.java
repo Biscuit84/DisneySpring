@@ -3,6 +3,8 @@ package disney.classe;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,8 +13,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Version;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_case")
 public  class Cases {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public  class Cases {
 	@Version
 	private int version;
 	
-	@Embedded
+	@Enumerated(EnumType.STRING)
 	private TypeCase typeCase;
 	
 	public Cases() {
@@ -36,6 +36,12 @@ public  class Cases {
 	}
 	
 
+
+	public Cases( String nom, TypeCase typeCase) {
+		super();
+		this.nom = nom;
+		this.typeCase = typeCase;
+	}
 
 	public Cases(String nom, int parameter, int version) {
 		super();
