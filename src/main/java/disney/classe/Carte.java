@@ -1,6 +1,8 @@
 package disney.classe;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,8 +15,11 @@ public abstract class Carte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
+	protected Long id;
 	protected String nom;
+	
+	@Enumerated(EnumType.STRING)
+	private TypeCarte typeCarte;
 	
 	public Carte(String nom) {
 		
@@ -25,12 +30,21 @@ public abstract class Carte {
 	
 	}
 	
+	
 
-	public int getId() {
+	public TypeCarte getTypeCarte() {
+		return typeCarte;
+	}
+
+	public void setTypeCarte(TypeCarte typeCarte) {
+		this.typeCarte = typeCarte;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

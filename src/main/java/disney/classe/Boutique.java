@@ -15,7 +15,7 @@ public class Boutique {
 	
 	
 
-	@OneToMany(mappedBy="boutique")
+	@OneToMany
 	private List<Personnage> personnages = new ArrayList<Personnage>();
 	
 	private int vies; 
