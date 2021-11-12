@@ -10,14 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import model.Personnage;
 
 @Entity
 public class CasesPlateau {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCasePlateau;
+	private Long idCasePlateau;
 	@ManyToOne
 	private Plateau plateau;
 	@OneToOne
@@ -26,9 +25,7 @@ public class CasesPlateau {
 	@OneToMany(mappedBy = "position")
 	private List<Personnage> joueurs;
 	
-	private int ordreCase;
-	//private String effet;
-	
+	private int ordreCase;	
 	
 	public CasesPlateau(Plateau plateau, Cases uneCase, int ordreCase) {
 		this.plateau = plateau;
@@ -40,11 +37,11 @@ public class CasesPlateau {
 	}
 
 	
-	public int getIdCasePlateau() {
+	public Long getIdCasePlateau() {
 		return idCasePlateau;
 	}
-	public void setIdCasePlateau(int idCasePlateau) {
-		this.idCasePlateau = idCasePlateau;
+	public void setIdCasePlateau(Long idCasePlateau) {
+		this.idCasePlateau =  idCasePlateau;
 	}
 	public Plateau getPlateau() {
 		return plateau;

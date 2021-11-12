@@ -1,23 +1,19 @@
 package disney.classe;
 
-import java.util.Objects;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import plateau.CasesPlateau;
 
 @Entity
 public class Personnage  {
 	
-	
-	
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	private String nom;
 	
@@ -69,13 +65,13 @@ public class Personnage  {
 		this.prixAchatPerso = prixAchatPerso;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -126,12 +122,7 @@ public class Personnage  {
 				+ pouvoir + "]";
 	}
 
-	
-	//pour remove un objet
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -145,16 +136,6 @@ public class Personnage  {
 		return id == other.id;
 	}
 
-
-
-
-//	public int getPosition() {
-//		return position;
-//	}
-//
-//	public void setPosition(int position) {
-//		this.position = position;
-//	}
 	
 	
 	
