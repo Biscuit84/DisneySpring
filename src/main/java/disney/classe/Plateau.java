@@ -1,5 +1,6 @@
 package disney.classe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,20 +9,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 @Entity
 public class Plateau   {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
+	@Version
+	private int version;
 	@Column(columnDefinition = "VARCHAR(50)")
 	private String nom;
 	@Column(name="nombre_de_cases")
 	private int nbCases;
 	
 	@OneToMany(mappedBy = "plateau")
-	private List<CasesPlateau> cases;
+	private List<CasesPlateau> cases= new ArrayList<CasesPlateau>();
 	
 	
 	public Plateau(String nom, int nbCases) {
@@ -35,12 +39,12 @@ public class Plateau   {
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
