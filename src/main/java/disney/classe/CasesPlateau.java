@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import model.Personnage;
+
 
 @Entity
 public class CasesPlateau {

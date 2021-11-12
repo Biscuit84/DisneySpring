@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Version;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -15,7 +16,11 @@ import javax.persistence.InheritanceType;
 public abstract class Compte  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
+	private Long id;
+	
+	@Version
+	protected int version;
+	
 	@Column(unique = true)
 	protected String login;
 	
@@ -24,6 +29,7 @@ public abstract class Compte  {
 	protected String nom;
 	
 	protected String prenom;
+	
 	@Column(unique = true)
 	protected String mail;
 	
@@ -52,13 +58,38 @@ public abstract class Compte  {
 
 
 
-	public int getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+
+
+
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
+
+
 
 	public String getLogin() {
 		return login;
