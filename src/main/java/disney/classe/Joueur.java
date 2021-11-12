@@ -28,7 +28,6 @@ public class Joueur extends Compte{
 	List<PersoObtenu> persos;
 
 
-
 	public Joueur(String login, String password, String nom, String prenom, String mail, String pseudo,
 			String level, int life) {
 		super(login, password, nom, prenom, mail);
@@ -47,20 +46,18 @@ public class Joueur extends Compte{
 		
 	}
 
-
 	public Joueur(String pseudo) {
 		super();
 		this.pseudo = pseudo;
 	}
 
 
-
-
-
 	public Joueur() {
 		super();
 
 	}
+	
+	
 	
 	public int getNbEtoiles() {
 		return nbEtoiles;
