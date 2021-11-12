@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 
 @Entity
 public class PersoObtenu {
@@ -12,7 +13,11 @@ public class PersoObtenu {
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
-	private int id;
+	private Long id;
+	
+	@Version
+	private int version;
+	
 	@ManyToOne
 	private Personnage perso;
 	
@@ -20,7 +25,6 @@ public class PersoObtenu {
 	private Joueur joueur;
 	
 	public PersoObtenu() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public PersoObtenu(Personnage perso, Joueur joueur) {
@@ -29,12 +33,22 @@ public class PersoObtenu {
 		this.joueur = joueur;
 	}
 
-	public int getId() {
+
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	public Personnage getPerso() {

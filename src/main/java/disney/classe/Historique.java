@@ -1,6 +1,5 @@
 package disney.classe;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -9,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 
 @Entity
@@ -18,7 +17,10 @@ public class Historique  {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
+	
+	@Version
+	private int version;
 	
 	private LocalDateTime dateHeurePartie;
 	
@@ -32,12 +34,6 @@ public class Historique  {
 	
 	@OneToMany
 	private List <Partie> parties;
-	
-	
-	
-	
-
-	
 	
 	
 	
@@ -89,20 +85,6 @@ public class Historique  {
 
 
 
-
-	
-
-
-	@Override
-	public String toString() {
-		return "Historique [dateHeurePartie=" + dateHeurePartie + ", tempsPartie=" + tempsPartie + ", positionArrivee="
-				+ positionArrivee + ", nbEtoilesGagnees=" + nbEtoilesGagnees +  "]";
-	}
-
-
-
-
-
 	public List<Partie> getParties() {
 		return parties;
 	}
@@ -117,13 +99,49 @@ public class Historique  {
 
 
 
-
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	
-	
+
+
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+
+
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Historique [dateHeurePartie=" + dateHeurePartie + ", tempsPartie=" + tempsPartie + ", positionArrivee="
+				+ positionArrivee + ", nbEtoilesGagnees=" + nbEtoilesGagnees +  "]";
+	}
+
+
+
+
+
+
 
 	
 	
