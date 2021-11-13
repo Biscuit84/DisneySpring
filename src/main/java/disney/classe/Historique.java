@@ -1,16 +1,14 @@
 package disney.classe;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 
 @Entity
@@ -20,9 +18,12 @@ public class Historique  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private LocalDateTime dateHeurePartie;
+	@Version
+	private int version;
 	
-	private LocalTime tempsPartie;
+	private LocalDateTime dateHeureDebutPartie;
+	
+	private LocalDateTime dateHeureFinPartie;
 	
 	private int positionArrivee;
 	
@@ -33,37 +34,31 @@ public class Historique  {
 	@OneToMany
 	private List <Partie> parties;
 	
-	
-	
-	
 
-	
-	
-	
-	
-	public Historique(Long id, LocalDateTime dateHeurePartie, LocalTime tempsPartie, int positionArrivee,
+
+	public Historique(Long id, LocalDateTime dateHeureDebutPartie, LocalDateTime dateHeureFinPartie, int positionArrivee,
 			int nbEtoilesGagnees, List<Partie> parties) {
 		super();
 		this.id = id;
-		this.dateHeurePartie = dateHeurePartie;
-		this.tempsPartie = tempsPartie;
+		this.dateHeureDebutPartie = dateHeureDebutPartie;
+		this.dateHeureFinPartie = dateHeureFinPartie;
 		this.positionArrivee = positionArrivee;
 		this.nbEtoilesGagnees = nbEtoilesGagnees;
 		this.parties = parties;
 	}
 
+	
 
 
-
-
-	public Historique(LocalDateTime dateHeurePartie, LocalTime tempsPartie, int positionArrivee, int nbEtoilesGagnees) {
-		
-		this.dateHeurePartie = dateHeurePartie;
-		this.tempsPartie = tempsPartie;
+	public Historique(LocalDateTime dateHeureDebutPartie, LocalDateTime dateHeureFinPartie, int positionArrivee, int nbEtoilesGagnees,
+			List<Partie> parties) {
+		super();
+		this.dateHeureDebutPartie = dateHeureDebutPartie;
+		this.dateHeureFinPartie = dateHeureFinPartie;
 		this.positionArrivee = positionArrivee;
 		this.nbEtoilesGagnees = nbEtoilesGagnees;
+		this.parties = parties;
 	}
-
 
 
 
@@ -76,18 +71,19 @@ public class Historique  {
 
 
 
-	public LocalDateTime getDateHeurePartie() {
-		return dateHeurePartie;
+	public LocalDateTime getDateHeureDebutPartie() {
+		return dateHeureDebutPartie;
 	}
-	public void setDateHeurePartie(LocalDateTime dateHeurePartie) {
-		this.dateHeurePartie = dateHeurePartie;
+	public void setDateHeureDebutPartie(LocalDateTime dateHeureDebutPartie) {
+		this.dateHeureDebutPartie = dateHeureDebutPartie;
 	}
-	public LocalTime getTempsPartie() {
-		return tempsPartie;
+	public LocalDateTime getDateHeureFinPartie() {
+		return dateHeureFinPartie;
 	}
-	public void setTempsPartie(LocalTime tempsPartie) {
-		this.tempsPartie = tempsPartie;
+	public void setDateHeureFinPartie(LocalDateTime dateHeureFinPartie) {
+		this.dateHeureFinPartie = dateHeureFinPartie;
 	}
+	
 	public int getPositionArrivee() {
 		return positionArrivee;
 	}
@@ -110,8 +106,7 @@ public class Historique  {
 
 	@Override
 	public String toString() {
-		return "Historique [dateHeurePartie=" + dateHeurePartie + ", tempsPartie=" + tempsPartie + ", positionArrivee="
-				+ positionArrivee + ", nbEtoilesGagnees=" + nbEtoilesGagnees +  "]";
+		return "Historique [ positionArrivee="+ positionArrivee + ", nbEtoilesGagnees=" + nbEtoilesGagnees +  "]";
 	}
 
 

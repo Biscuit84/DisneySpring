@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 
 @Entity
 public class PersoObtenu {
@@ -18,6 +19,9 @@ public class PersoObtenu {
 	
 	@ManyToOne
 	private Joueur joueur;
+	
+	@Version
+	private int version;
 	
 	public PersoObtenu() {
 		// TODO Auto-generated constructor stub

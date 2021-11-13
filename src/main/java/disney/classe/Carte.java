@@ -10,8 +10,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Carte {
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class Carte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +21,10 @@ public abstract class Carte {
 	@Enumerated(EnumType.STRING)
 	private TypeCarte typeCarte;
 	
-	public Carte(String nom) {
+	public Carte(String nom, TypeCarte typeCarte) {
 		
 		this.nom = nom;
+		this.typeCarte=typeCarte;
 	}
 
 	public Carte() {

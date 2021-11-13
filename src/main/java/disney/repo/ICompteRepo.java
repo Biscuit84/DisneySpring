@@ -6,4 +6,6 @@ import disney.classe.Compte;
 
 public interface ICompteRepo extends JpaRepository<Compte,Long> {
 
+	Compte findByLoginAndPassword(String login, String password);
+	
 }

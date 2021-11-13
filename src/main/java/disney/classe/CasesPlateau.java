@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 
 
 
@@ -27,6 +28,9 @@ public class CasesPlateau {
 	private List<Personnage> joueurs;
 	
 	private int ordreCase;	
+	
+	@Version
+	private int version;
 	
 	public CasesPlateau(Plateau plateau, Cases uneCase, int ordreCase) {
 		this.plateau = plateau;

@@ -32,11 +32,38 @@ public class Plateau   {
 		this.nom = nom;
 		this.nbCases = nbCases;
 	}
+	
+	
+
+
+	public Plateau(String nom, int nbCases, List<CasesPlateau> cases) {
+		super();
+		this.nom = nom;
+		this.nbCases = nbCases;
+		this.cases = cases;
+	}
+
+
 
 
 	public Plateau() {
 		
 	}
+
+	
+
+	public List<CasesPlateau> getCases() {
+		return cases;
+	}
+
+
+
+
+	public void setCases(List<CasesPlateau> cases) {
+		this.cases = cases;
+	}
+
+
 
 
 	public Long getId() {
